@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery Store</title>
+    <style>
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f3f4f6;
+        }
+
+        .category-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .category-buttons button {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+            margin: 0 10px;
+        }
+
+        .category-buttons button:hover {
+            background: linear-gradient(to right, #0c8976, #30c270);
+        }
+
+        .products-section {
+            margin-bottom: 20px;
+        }
+
+        .products-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .product p {
+            color: #666666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product button {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .product button:hover {
+            background: linear-gradient(to right, #0c8976, #30c270);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Online Grocery Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="grow.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="checkout.html">checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="category-buttons">
+            <button onclick="filterProducts('all')">All</button>
+            <button onclick="filterProducts('fruits')">Fruits</button>
+            <button onclick="filterProducts('vegetables')">Vegetables</button>
+            <button onclick="filterProducts('others')">Others</button>
+        </div>
+
+        <!-- Fruits Section -->
+        <section class="products-section" id="fruits-section">
+            <h2>Fruits</h2>
+            <div class="products-grid">
+                <!-- Example of 6 products in Fruits -->
+                <div class="product" data-category="fruits">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240308174500/f12.jpg" alt="Apple">
+                    <h3>Apple</h3>
+                    <p>$1.00</p>
+                    <button onclick="addToCart('Apple', 1.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="naveen/banana.png" alt="Banana">
+                    <h3>Banana</h3>
+                    <p>$0.50</p>
+                    <button onclick="addToCart('Banana', 0.50)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240308174616/o12.jpg" alt="Orange">
+                    <h3>Orange</h3>
+                    <p>$0.75</p>
+                    <button onclick="addToCart('Orange', 0.75)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="naveen/Kiwi-fruit.webp" alt="Grapes">
+                    <h3>Kiwi-fruit - 1Kg</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Grapes', 2.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="naveen/Mango.webp" alt="Mango">
+                    <h3>Mango - 1Kg</h3>
+                    <p>$4.00</p>
+                    <button onclick="addToCart('Mango', 4.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="naveen/Rasberry.jpg" alt="Rasberry">
+                    <h3>Rasberry - 500g</h3>
+                    <p>$4.00</p>
+                    <button onclick="addToCart('Rasberry', 4.00)">Add to Cart</button>
+                </div>
+                
+                <div class="product" data-category="fruits">
+                    <img src="naveen/product-4.jpg" alt="WaterMelon">
+                    <h3>WaterMelon</h3>
+                    <p>$4.00</p>
+                    <button onclick="addToCart('WaterMelon', 4.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="fruits">
+                    <img src="naveen/pomegranate.webp" alt="Pomegranate">
+                    <h3>Pomegranate - 1Kg</h3>
+                    <p>$4.00</p>
+                    <button onclick="addToCart('Pomegranate', 4.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="fruits">
+                    <img src="naveen/cart4.jpg" alt="Pineapple">
+                    <h3>Pineapple - 1 </h3>
+                    <p>$4.00</p>
+                    <button onclick="addToCart('Pineapple', 4.00)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vegetables Section -->
+        <section class="products-section" id="vegetables-section">
+            <h2>Vegetables</h2>
+            <div class="products-grid">
+                <!-- Example of 6 products in Vegetables -->
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/Brinjal.jpg" alt="Brinjal">
+                    <h3>Brinjal</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Brinjal', 2.00)">Add to Cart</button>
+                </div>
+
+                    
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/tomato.jpg" alt="Tomato">
+                    <h3>Tomato - 1Kg</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Tomato', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/cabbage.jpg" alt="Cabbage">
+                    <h3>Cabbage - 1</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Cabbage', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/beetroot.jpg" alt="beetroot">
+                    <h3>beetroot - 250g </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('beetroot', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/jady finger.jpg" alt="Lady Finger">
+                    <h3>Lady Finger - 250g </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Lady Finger', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/broccoli.jpg" alt="broccoli">
+                    <h3>Broccoli </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('broccoli', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/raddish.jpg" alt="Raddish">
+                    <h3>Raddish - 250g </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Raddish', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/carrot.jpg" alt="Carrot">
+                    <h3>Carrot - 250g </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Carrot', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/drumstick.jpg" alt="Drumstick">
+                    <h3>Drumstick - 2 </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Drumstick', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="vegetables">
+                    <img src="naveen/potato.jpg" alt="Potato">
+                    <h3>Potato - 1Kg </h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Potato', 2.00)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Others Section -->
+        <section class="products-section" id="others-section">
+            <h2>Others</h2>
+            <div class="products-grid">
+                <!-- Example of 6 products in Others -->
+                <div class="product" data-category="others">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240308174326/d12.jpg" alt="Salt">
+                    <h3>Salt</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Salt', 2.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="others">
+                    <img src="naveen/harpic bath" alt="harpic toilet">
+                    <h3>Harpic Toilet Cleaner</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('harpic toilet', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/chocos.avif" alt="chocos">
+                    <h3>Chocos - 500g</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('chocos', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/ghee.jpg" alt="ghee">
+                    <h3>Ghee - 250g</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('ghee', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/dabur.jpg" alt="dabur Honey">
+                    <h3>Dabur Honey - 250g</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('dabur Honey', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/pasumark peanut oil.jpg" alt="Peanut oil">
+                    <h3>Pasumark Peanut oil - 1L</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Peanut oil', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/cart3.png" alt="Juice">
+                    <h3>Fresh Pressed Juice - 1L</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Juice', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/Udhayam orid dhall.jpg" alt="Orid dhall">
+                    <h3>Udhayam orid dhall - 1Kg</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('Orid dhall', 2.00)">Add to Cart</button>
+                </div>
+
+                <div class="product" data-category="others">
+                    <img src="naveen/YIPPEE NOODLES.jpg" alt="dhall">
+                    <h3>Yippee Noodles - 200g</h3>
+                    <p>$2.00</p>
+                    <button onclick="addToCart('dhall', 2.00)">Add to Cart</button>
+                </div>
+                <div class="product" data-category="others">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240308181947/o123.jpg" alt="Oil">
+                    <h3>Sunflower Oil</h3>
+                    <p>$8.00</p>
+                    <button onclick="addToCart('Oil', 8.00)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function addToCart(productName, productPrice) {
+            let Items = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const index = Items.findIndex(item => item.name === productName);
+            if (index !== -1) {
+                Items[index].quantity += 1;
+            } else {
+                const item = {
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                };
+                Items.push(item);
+            }
+            localStorage.setItem('cartItems', JSON.stringify(Items));
+            alert(`${productName} added to cart!`);
+        }
+
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        function redirectToCheckout(productName, productPrice) {
+            const url = `checkout.html?name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
+            window.location.href = url;
+        }
+
+    </script>
+</body>
+
+</html>
